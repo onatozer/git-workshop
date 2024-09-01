@@ -45,8 +45,7 @@ class Series:
         for val in self.data:
             count_dict.get(val,0) += 1
 
-        return max(count_dict)
-
+        return count_dict[max(count_dict)]
         
 
     def unique_val(self) -> list:
