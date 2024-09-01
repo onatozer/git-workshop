@@ -49,6 +49,8 @@ class DataFrame:
         :param n: Number of rows to return.
         :return: A new DataFrame with the first n rows.
         """
+        head_data = [Series(series.name, series.data[:n]) for series in self.data]
+        return DataFrame(head_data)
         # TODO: Person 1 - Implement this function
 
 
@@ -71,6 +73,9 @@ class DataFrame:
 
         :param series: The Series object to add as a new column.
         """
+        # Add the new Series to the DataFrame
+        self.data.append(series.data)
+        self.columns.append(series.name)
         # TODO: Person 1 - Implement this function
 
 
@@ -97,6 +102,9 @@ class DataFrame:
         :param column_name: The name of the column to retrieve.
         :return: The Series object for the specified column.
         """
+        for series in self.data:
+            if series.name == column_name:
+                return series
         # TODO: Person 1 - Implement this function
 
 
@@ -139,6 +147,18 @@ class DataFrame:
         :param new_col: The name of the new column to create.
         :param operation: A function that takes two arguments and returns a value (e.g., addition, multiplication).
         """
+        column1 = self.get_column(col1)
+        column2 = self.get_column(col2)
+        
+        newcol = []
+
+        for c1, c2 in column1, column2:
+                newcol.append(operation(c1, c2))
+        
+        temp = Series(newcol, new_col)
+        self.add_column(temp)
+        self.drop_column(col1)
+        self.drop_column(col2)
         # TODO: Person 1 & 2 - Implement this function
         # Either code together or have one person code and the other review
         # ...
