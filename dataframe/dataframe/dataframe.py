@@ -184,6 +184,16 @@ class DataFrame:
 
         :param value: New value that replaces NaN."""
         # TODO: Person 2 - Implement this function
+        temp = []
+        for d in self.data:
+            temp_series = []
+            for s in d.data:
+                if not s:
+                    s = value
+                temp_series.append(s)
+            temp.append(Series(temp_series, d.name))
+            
+        return DataFrame(temp)
     
 
     def apply(self, func, column: str = None) -> DataFrame:
