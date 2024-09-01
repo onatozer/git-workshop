@@ -23,9 +23,17 @@ def test_replace():
     test_list = Series([1,2,1,3], name = 'billy')
     assert test_list.replace(4,3) == [1,2,1,1]
 
+  
 
-    
+def main():
+    test_replace()
+    test_max()
+    test_series_sum()
 
+  
+
+if __name__ == "__main__":
+	main()
 
 # TODO: ALL - Implement tests for all other Series methods
 # Use the test_series_sum test as a reference
