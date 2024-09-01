@@ -168,6 +168,8 @@ class DataFrame:
         :param other: Another DataFrame object to concatenate horizontally.
         """
         # TODO: Person 2 - Implement this function
+        self.data = self.data + other.data
+        self.columns = self.columns + other.columns
 
 
     def remove_na(self) -> DataFrame:
