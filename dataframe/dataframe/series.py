@@ -21,7 +21,7 @@ class Series:
 
     def sum(self) -> float:
         """Return the sum of the data in the series."""
-        # TODO: Person 3 - Implement this function
+        return sum(self.data)
 
 
     def max(self) -> float:
@@ -32,7 +32,7 @@ class Series:
 
     def min(self) -> float:
         """Return the minimum value in the series."""
-        # TODO: Person 3 - Implement this function
+        return min(self.data)
 
 
     def mean(self) -> float:
@@ -43,6 +43,12 @@ class Series:
     def mode(self) -> float:
         """Return the mode of the data in the series."""
         # TODO: Person 3 - Implement this function
+        count_dict = {}
+        for val in self.data:
+            count_dict.get(val,0) += 1
+
+        return count_dict[max(count_dict)]
+        
 
     def unique_val(self) -> list:
         """Return the unique values in the series."""
@@ -56,7 +62,7 @@ class Series:
 
         :param value: The specific value being checked.
         """
-        # TODO: Person 3 - Implement this function
+        return value in self.data
 
     def replace(self, current_val: float, new_val: float) -> Series:
         """Return a new Series with a specific current value replaced with a new value.
@@ -80,4 +86,12 @@ class Series:
         :param func: A function to apply to each element.
         :return: A new Series with the function applied.
         """
-        # TODO: Person 3 - Implement this function
+        new_data = self.data
+        for i, val in enumerate(new_data):
+            new_data[i] = func(val)
+
+        return Series(name=self.name,data=new_data)
+
+
+        
+
