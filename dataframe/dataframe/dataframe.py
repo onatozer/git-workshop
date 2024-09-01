@@ -114,6 +114,10 @@ class DataFrame:
         :param values: A list of data to set for the specified column.
         """
         # TODO: Person 2 - Implement this function
+        for s in self.data:
+            if s.name == column_name:
+                s.data == values
+                break
 
 
     def remove_duplicates(self) -> None:
