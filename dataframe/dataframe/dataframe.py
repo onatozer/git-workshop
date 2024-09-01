@@ -83,13 +83,9 @@ class DataFrame:
         :param column_name: The name of the column to drop.
         """
         # TODO: Person 2 - Implement this function
-        for i, s in enumerate(self.data):
-            if s.name == column_name:
-                self.data.pop(i)
-                break
-        
         for i, c in enumerate(self.columns):
             if c == column_name:
+                self.columns.pop(i)
                 self.data.pop(i)
                 break
 
@@ -188,6 +184,7 @@ class DataFrame:
 
         :param value: New value that replaces NaN."""
         # TODO: Person 2 - Implement this function
+    
 
     def apply(self, func, column: str = None) -> DataFrame:
         """
