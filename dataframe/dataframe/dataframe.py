@@ -83,6 +83,15 @@ class DataFrame:
         :param column_name: The name of the column to drop.
         """
         # TODO: Person 2 - Implement this function
+        for i, s in enumerate(self.data):
+            if s.name == column_name:
+                self.data.pop(i)
+                break
+        
+        for i, c in enumerate(self.columns):
+            if c == column_name:
+                self.data.pop(i)
+                break
 
 
     def get_column(self, column_name: str) -> Series:
