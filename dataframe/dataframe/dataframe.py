@@ -60,6 +60,7 @@ class DataFrame:
         :return: A new DataFrame with the last n rows.
         """
         # TODO: Person 2 - Implement this function
+        return DataFrame(self.data[-n:])
 
 
     def add_column(self, series: Series) -> None:
@@ -82,6 +83,11 @@ class DataFrame:
         :param column_name: The name of the column to drop.
         """
         # TODO: Person 2 - Implement this function
+        for i, c in enumerate(self.columns):
+            if c == column_name:
+                self.columns.pop(i)
+                self.data.pop(i)
+                break
 
 
     def get_column(self, column_name: str) -> Series:
@@ -104,6 +110,10 @@ class DataFrame:
         :param values: A list of data to set for the specified column.
         """
         # TODO: Person 2 - Implement this function
+        for s in self.data:
+            if s.name == column_name:
+                s.data == values
+                break
 
 
     def remove_duplicates(self) -> None:
@@ -154,6 +164,8 @@ class DataFrame:
         :param other: Another DataFrame object to concatenate horizontally.
         """
         # TODO: Person 2 - Implement this function
+        self.data = self.data + other.data
+        self.columns = self.columns + other.columns
 
 
     def remove_na(self) -> DataFrame:
@@ -172,6 +184,17 @@ class DataFrame:
 
         :param value: New value that replaces NaN."""
         # TODO: Person 2 - Implement this function
+        temp = []
+        for d in self.data:
+            temp_series = []
+            for s in d.data:
+                if not s:
+                    s = value
+                temp_series.append(s)
+            temp.append(Series(temp_series, d.name))
+            
+        return DataFrame(temp)
+    
 
     def apply(self, func, column: str = None) -> DataFrame:
         """
